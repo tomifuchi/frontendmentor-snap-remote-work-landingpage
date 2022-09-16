@@ -1,0 +1,147 @@
+:root {
+/*Front-end Style Guide
+## Layout
+The designs were created to the following widths:
+*/
+--mobile-width: 375px;
+--desktop-width: 1440px;
+/*
+Colors
+###Neutral
+*/
+--color-almost-white: hsl(0, 0%, 98%);
+--color-medium-gray: hsl(0, 0%, 41%);
+--color-almost-black: hsl(0, 0%, 8%);
+
+/*
+## Typography
+### Body Copy (paragraph)
+- Family: [Epilogue](https://fonts.google.com/specimen/Epilogue)
+*/
+
+--font-size: 18px;
+--font-family-epilogue: 'Epilogue';
+--font-weight1: 500;
+--font-weight2: 700;
+}
+
+/* Resetting */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* General class */
+.flex {
+    display: flex;
+}
+
+/* General reset */
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+/* Header */
+header {
+}
+
+header nav {
+    gap: 50px;
+    align-items: center;
+
+    padding: 10px 20px;
+
+    border: 1px solid #000;
+}
+
+header nav .nav-login{
+    margin-left: auto;
+}
+
+header nav ul {
+    align-items: center;
+    gap: 35px;
+}
+header nav ul li a{
+    color: var(--color-medium-gray);
+    font-family: var(--font-family-epilogue);
+}
+
+/** Nav logo **/
+header .nav-logo{
+    color: var(--color-almost-black);
+    font-family: var(--font-family-epilogue);
+    font-weight: var(--font-weight2);
+    font-size: 2.5em;
+}
+
+/** Nav expand button**/
+header .nav-links ul li:nth-child(1){
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+header .nav-links ul li:nth-child(2){
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+header .expand-container{
+    position: absolute;
+    width: 30px;
+    height: 1.1em;
+    top: 0;
+    right: -2em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header .expand-v{
+    height: 2px;
+    width: 20%;
+    background-color: var(--color-medium-gray);
+}
+
+header .expand-v.left{
+    transition: 0.15s;
+    transform: rotate(50deg) translateY(-50%) translateX(15%);
+}
+
+header .expand-v.right {
+    transition: 0.15s;
+    transform: rotate(-50deg) translateY(-50%) translateX(-15%);
+}
+
+/** active state **/
+header .expand-v.left.active {
+    transition: 0.1s;
+    /* Animation here*/ 
+    transform: rotate(-50deg) translateY(-50%) translateX(45%) translateY(-80%) translateX(35%) translateY(80%) translateX(-35%);
+}
+
+header .expand-v.right.active {
+    transition: 0.1s;
+    /* Animation here*/ 
+    transform: rotate(50deg) translateY(-50%) translateX(-45%) translateY(-80%) translateX(-35%) translateY(80%) translateX(35%);
+}
+
+/** Nav login **/
+header .nav-login #nav-login-register{
+    padding: 10px 20px;
+    border: 1px solid var(--color-medium-gray);
+    border-radius: 10px;
+}
