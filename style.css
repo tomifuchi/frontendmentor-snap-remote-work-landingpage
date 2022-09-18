@@ -33,12 +33,19 @@ Colors
 body {
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
-
 
 /* General class */
 .flex {
     display: flex;
+}
+
+/* Content wraper for wraping content */
+.content-wraper {
+    max-width: 1440px; 
+    width: 90%;
+    margin: 0 auto;
 }
 
 /* General reset */
@@ -52,61 +59,101 @@ ul li a {
     text-decoration: none;
 }
 
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
 /* Header */
 header {
+    background-color: var(--color-almost-white);
 }
 
 header nav {
     gap: 50px;
     align-items: center;
 
-    padding: 10px 20px;
-
-    border: 1px solid #000;
+    padding: 4vh 0;
 }
 
-header nav .nav-login{
-    margin-left: auto;
+header #nav-links-login{
+    width: 100%;
+    justify-content: space-between;
 }
 
 header nav ul {
     align-items: center;
     gap: 35px;
 }
+
 header nav ul li a{
     color: var(--color-medium-gray);
     font-family: var(--font-family-epilogue);
+    font-size: var(--font-size);
+}
+
+header nav ul li a:hover{
+    color: var(--color-almost-black);
 }
 
 /** Nav logo **/
-header .nav-logo{
+header .nav-logo a{
     color: var(--color-almost-black);
     font-family: var(--font-family-epilogue);
     font-weight: var(--font-weight2);
-    font-size: 2.5em;
+    font-size: 2em;
+    text-decoration: none;
 }
 
-/** Nav expand button**/
+/** Nav mobile button **/
+header nav {
+    position: relative;
+}
+
+header nav .mb-button{
+    position: absolute;
+    height: 20px;
+    width: 30px;
+    top: 3em;
+    right: 0em;
+    display: none;
+
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header nav .mb-button .mb-button-bar{
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-almost-black);
+}
+
+
+/** Nav expand button icon, the v one next to the links**/
 header .nav-links ul li:nth-child(1){
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 header .nav-links ul li:nth-child(2){
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
-header .expand-container{
+/**
+   Absolute to the first and second link, with the spans
+   we center the damn thing with flex then rotate using transform
+**/
+header .expand-v-container{
     position: absolute;
     width: 30px;
     height: 1.1em;
     top: 0;
     right: -2em;
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
@@ -117,31 +164,325 @@ header .expand-v{
 }
 
 header .expand-v.left{
-    transition: 0.15s;
-    transform: rotate(50deg) translateY(-50%) translateX(15%);
+    transform: rotate(40deg) translateY(-25%) translateX(15%);
 }
 
 header .expand-v.right {
-    transition: 0.15s;
-    transform: rotate(-50deg) translateY(-50%) translateX(-15%);
+    transform: rotate(-40deg) translateY(-25%) translateX(-15%); 
 }
 
-/** active state **/
+/** active state of the expand v's **/
 header .expand-v.left.active {
-    transition: 0.1s;
-    /* Animation here*/ 
-    transform: rotate(-50deg) translateY(-50%) translateX(45%) translateY(-80%) translateX(35%) translateY(80%) translateX(-35%);
+    transform: rotate(-40deg) translateY(-25%) translateX(25%);
 }
 
 header .expand-v.right.active {
-    transition: 0.1s;
-    /* Animation here*/ 
-    transform: rotate(50deg) translateY(-50%) translateX(-45%) translateY(-80%) translateX(-35%) translateY(80%) translateX(35%);
+    transform: rotate(40deg) translateY(-25%) translateX(-25%); 
+}
+
+/** Nav expand inside list **/
+header .expand-item-list {
+    /* Absolute to the list item which is relative */
+    position: absolute;
+    top: 2.5em;
+
+    padding: 25px;
+    border-radius: 10px;
+    /*There is a box shadow here but let's do this for now*/
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: var(--color-almost-white);
+
+
+    /* Prevent line wraping */
+    width: max-content;
+    opacity: 0;
+    transition: 0.2s;
+    transform: translateY(10%); 
+}
+
+
+header .expand-item-list.active{
+    opacity: 1;
+    transition: 0.2s;
+    transform: translateY(0);
+}
+
+header .expand-item-list li{
+    gap: 10px;
+    margin: 5px 0;
 }
 
 /** Nav login **/
 header .nav-login #nav-login-register{
     padding: 10px 20px;
     border: 1px solid var(--color-medium-gray);
-    border-radius: 10px;
+    border-radius: 15px;
+}
+
+header .nav-login #nav-login-register:hover{
+    color: var(--color-almost-black);
+    border: 1px solid var(--color-almost-black);
+}
+
+/* Main */
+main {
+    background-color: var(--color-almost-white);
+}
+
+main .hero {
+    display: flex;
+    gap: 55px;
+}
+
+main .hero.content-wraper {
+    width: 80%;  
+}
+
+/** Hero description **/
+main .hero-desc{
+    /* Takes up 50% of the hero */
+    flex: 1;
+
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    /* Font work */
+    font-family: var(--font-family-epilogue);
+}
+
+/* Note this is getting the "remote work" to stay together
+so if it's not desire here you can:
+  delete the div, then turn off the flexing in this h1 */
+main .hero-desc .hero-desc-tittle{
+    display: flex;
+    flex-direction: column;
+
+    color: var(--color-almost-black);
+    font-weight: var(--font-weight2);
+    font-size: 5vw;
+}
+
+main .hero-desc .hero-desc-intro{
+    color: var(--color-medium-gray);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight1);
+}
+
+main .hero-desc button {
+    align-self: start;
+
+    font-family: var(--font-family-epilogue);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight2);
+    color: var(--color-almost-white);
+    background-color: var(--color-almost-black);
+    border: 1px solid var(--color-almost-black);
+
+    padding: 1em 2em; 
+    padding: 1.1vw 2.2vw;
+    border-radius: 17px;
+}
+
+main .hero-desc button:hover{
+    color: var(--color-almost-black);
+    background-color: var(--color-almost-white);
+    border: 1px solid var(--color-almost-black);
+}
+
+main .hero-desc .client-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/** Hero image **/
+main .hero-img{
+    flex: 1;
+}
+
+main .hero-img img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+/** Mobile area **/
+
+
+
+/** Mobile media query **/
+@media (max-width: 975px){
+    .content-wraper{
+        width: 95%;
+    }
+
+    /* Overlay effect for mobile menu on body */
+    #mb-overlay.active{
+       display: block;
+       background-color: var(--color-almost-black);
+       opacity: 0.7;
+       transition:  opacity 0.3s;
+    }
+
+    /* The fucking nav button */
+    /* header nav is already relative above */
+    header nav #nav-links-login {
+        top: 0;
+        right: 0;
+        position: fixed;
+        width: 40%;
+        height: 100%; 
+
+        justify-content: start;
+
+        background-color: var(--color-almost-black);
+        padding-top: 100px;
+        transition: 0.3s;
+        transform: translateX(100%);
+    }
+
+    header nav #nav-links-login.active{
+        transition: 0.3s;
+        transform: translateX(0);
+    }
+
+    header nav #nav-links-login, header nav .nav-links ul, header nav .nav-login ul{
+        flex-direction: column;
+    }
+
+    header nav .nav-login a, header nav .nav-links a{
+        color: var(--color-almost-white);
+    }
+
+    header nav .mb-button {
+        display: flex;
+    }
+
+    header nav .mb-button.active{
+        z-index: 1;
+    }
+
+    /* Hamburger button animation */
+    header .mb-button-bar:nth-child(1){
+        transition: 0.3s;
+        transform: translateY(0) rotate(0);
+    }
+    header .mb-button-bar:nth-child(2){
+        transition: 0.3s;
+        scale(1);
+    }
+    header .mb-button-bar:nth-child(3){
+        transition: 0.3s;
+        transform: translateY(0) rotate(0);
+    }
+    header .mb-button-bar:nth-child(1).active{
+        transition: 0.3s;
+        background-color: var(--color-almost-white);
+        transform: translateY(220%) rotate(-45deg) ;
+    }
+    header .mb-button-bar:nth-child(2).active{
+        transition: 0.3s;
+        background-color: var(--color-almost-white);
+        transform: scale(0);
+    }
+    header .mb-button-bar:nth-child(3).active{
+        transition: 0.3s;
+        background-color: var(--color-almost-white);
+        transform: translateY(-320%) rotate(45deg);
+    }
+
+    /** Expand item list **/
+    header .expand-item-list {
+       position: static;
+       top: 0;
+       padding: 0;
+       border-radius: 0;
+       /*There is a box shadow here but let's do this for now*/
+       box-shadow: 0;
+       background-color: transparent;
+       opacity: 1;
+       border: 1px solid pink;
+       transform: translateX(0);
+    }
+    
+    header .expand-item-list li{
+        flex-wrap: nowrap;
+    }
+    header .nav-links ul li:nth-child(1){
+        position: static;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid white;
+    }
+
+    header .nav-links ul li:nth-child(2){
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid white;
+    }
+
+    header .expand-item-list.active{
+        opacity: 1;
+        transition: 0.3s;
+        transform: translateY(0);
+    }
+
+    header .expand-item-list li{
+        gap: 0;
+        margin: 0;
+    }
+
+    /* Main */
+    main .hero {
+        flex-direction: column-reverse;
+    }
+
+    main .hero.content-wraper {
+        width: 100%;
+    }
+
+    /* Hero description */
+    main .hero-desc{
+        align-items: center;
+        gap: 10pxpx;
+    }
+
+    main .hero-desc .hero-desc-tittle{
+        /* Why does this shit work ? */
+        display: flex;
+        justify-content: center;
+        font-size: 9vw;
+        width: 85vw;
+    }
+
+    main .hero-desc .hero-desc-intro{
+        text-align: center;
+        width: 75%;
+    }
+
+    main .hero-desc button{
+        align-self: center;
+    }
+
+    main .hero-desc .client-container{
+        flex-direction: column;
+        gap: 5vh;
+    }
+
+
+    /* Hero image */
+    main .hero-img{
+        max-width: 650px;
+        width: 100%;
+        align-self: center;
+    }
+
+    main .hero-img img{
+        width: 100%;
+        height: auto;
+    }
 }

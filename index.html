@@ -16,29 +16,43 @@
   </style>
 </head>
 <body>
-
   <header>
-    <nav class="flex">
-      <div class="nav-logo">snap</div>
+    <nav class="flex content-wraper">
+      <div class="nav-logo"><a href="#">snap</a></div>
+      <a href="#" class="mb-button">
+        <span class="mb-button-bar"></span>
+        <span class="mb-button-bar"></span>
+        <span class="mb-button-bar"></span>
+      </a>
+      <div id="nav-links-login" class="flex">
       <div class="nav-links">
         <ul class="flex">
-
           <li>
-            <a class="expand-item" href="#features">Features
-              <a class="expand-container">
+            <a class="expand-item" href="#features">Features</a>  
+              <a class="expand-v-container">
                 <span class="expand-v left"></span>
                 <span class="expand-v right"></span>
               </a>
-            </a>
+              <!--Inside list-->
+              <ul class="expand-item-list">
+                <li class="flex"><img src="./images/icon-todo.svg"><a href="">To do list</a></li>
+                <li class="flex"><img src="./images/icon-calendar.svg"><a href="">Calendar</a></li>
+                <li class="flex"><img src="./images/icon-reminders.svg"><a href="">Reminders</a></li>
+                <li class="flex"><img src="./images/icon-planning.svg"><a href="">Planing</a></li>
+              </ul>
           </li>
 
           <li>
-            <a class="expand-item" href="#company">Company
-              <a class="expand-container">
+            <a class="expand-item" href="#company">Company</a>
+              <a class="expand-v-container">
                 <span class="expand-v left"></span>
                 <span class="expand-v right"></span>
               </a>
-              </a>
+            <ul class="expand-item-list">
+                <li><a href="">History</a></li>
+                <li><a href="">Our team</a></li>
+                <li><a href="">Blog</a></li>
+            </ul>
           </li>
 
           <li><a href="#about">Careers</a></li>
@@ -48,25 +62,40 @@
       <div class="nav-login">
         <ul class="flex">
           <li><a href="#login">Login</a></li>
-          <li id="nav-login-register"><a href="#register">Register</a></li>
+          <li ><a  id="nav-login-register" href="#register">Register</a></li>
         </ul>
+      </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <div class="hero">
-      <div class="hero-desc">
-      Make remote work
+    <div class="hero content-wraper">
+      <div class="flex hero-desc">
+        <h1 class="hero-desc-tittle">Make <div style="display: inline-block; width: max-content;"> remote work </div></h1>
 
-      Get your team in sync, no matter your location. Streamline processes, 
-      create team rituals, and watch productivity soar.
+        <p class="hero-desc-intro">
+        Get your team in sync, no matter your location. Streamline processes, 
+        create team rituals, and watch productivity soar.
+        </p>
 
-      Learn more
+        <button>Learn more</button>
+
+        <div class="client-container">
+        <img src="./images/client-databiz.svg">
+        <img src="./images/client-audiophile.svg" alt="">
+        <img src="./images/client-maker.svg" alt="">
+        <img src="./images/client-meet.svg" alt="">
+        </div>
       </div>
       <div class="hero-img">
+        <img srcset
+          ="./images/image-hero-desktop.png 1440w,
+          ./images/image-hero-mobile.png 975w"
+          src="./images/image-hero-desktop.png"
+        >
       </div>
-    </div>
+   </div>
   </main>
   
   <div class="attribution">
