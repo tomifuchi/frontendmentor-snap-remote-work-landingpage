@@ -1,21 +1,26 @@
-/*
+/* Event listener for the mobile button */
 const mb_button = document.getElementsByClassName('mb-button')[0];
+const overlay = document.getElementById('mb-overlay');
 mb_button.addEventListener('click', () => {
+    mb_button.classList.toggle('active');
+    const mb_menu = document.getElementById('nav-links-login');
     const mb_bar = mb_button.getElementsByClassName('mb-button-bar');
-    const mb_nav_links_login = document.getElementById('nav-links-login');
 
-    mb_nav_links_login.classList.toggle('active');
-    mb_button.classList.toggle('active'); 
-    console.log(mb_bar);
+    mb_menu.classList.toggle('active');
     for(let i = mb_bar.length - 1; i >= 0; i--){
         mb_bar[i].classList.toggle('active');
     }
 
-    //Overlay divs that reduces the opacity 
-    const overlay = document.getElementById('mb-overlay');
+    /* Overlay effect on the body */
     overlay.classList.toggle('active');
+    document.body.classList.toggle('active-overlay');
+
 });
-*/
+overlay.addEventListener('click', () => {
+  mb_button.dispatchEvent(new Event('click'));
+})
+
+
 
 /* Desktop expand list item and the expand v icon 
    When click, it will open the clicked one and disable every other 
