@@ -1,5 +1,6 @@
 /* Event listener for the mobile button */
 const mb_button = document.getElementsByClassName('mb-button')[0];
+const expand_inside_list_button = document.getElementsByClassName('expand-list-mb-button')[0];
 const overlay = document.getElementById('mb-overlay');
 mb_button.addEventListener('click', () => {
     mb_button.classList.toggle('active');
@@ -14,8 +15,12 @@ mb_button.addEventListener('click', () => {
     /* Overlay effect on the body */
     overlay.classList.toggle('active');
     document.body.classList.toggle('active-overlay');
-
 });
+
+expand_inside_list_button.addEventListener('click', () => {
+  mb_button.dispatchEvent(new Event('click'));
+})
+
 overlay.addEventListener('click', () => {
   mb_button.dispatchEvent(new Event('click'));
 })
